@@ -1,0 +1,33 @@
+name: Test basic Emacs version install
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - id: setup-emacs
+        name: Set up Emacs 27.2
+        uses: .
+        with:
+          version: '27.2'
+      - name: Assert Emacs is on PATH and runs
+        shell: bash
+        run: |
+          echo "Checking emacs is available..."
+          if ! command -v emacs &>/dev/null; then
+            echo "FAIL: emacs not found on PATH"
+            exit 1
+          fi
+          echo "PASS: emacs found on PATH"
+      - name: Assert Emacs version output
+        shell: bash
+        run: |
+          VERSION_OUTPUT=$(emacs --version 2>&1 || true)
+          echo "emacs --version output: $VERSION_OUTPUT"
+          if echo "$VERSION_OUTPUT" | grep -qi "GNU Emacs"; then
+            echo "PASS: emacs --version reports GNU Emacs"
+          else
+            echo "FAIL: unexpected emacs --version output"
+            exit 1
+          fi
