@@ -1,14 +1,58 @@
-# jcs090218/setup-emacs-windows
+**I've created another GitHub Actions project that supports all common platforms (`Linux`, `macOS`, and `Windows`).
+See [jcs090218/setup-emacs](https://github.com/jcs090218/setup-emacs) for more information! I will recommend
+people use that instead of this one!**
 
-Install a specific Emacs version for use in your worflow.
+---
 
-Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at [https://github.com/jcs090218/setup-emacs-windows](https://github.com/jcs090218/setup-emacs-windows).
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![Release](https://img.shields.io/github/release/jcs090218/setup-emacs-windows.svg?logo=github)](https://github.com/jcs090218/setup-emacs-windows/releases/latest)
+<a href="#"><img align="right" src="./etc/emacs-logo.png" width="15%"></a>
 
-## Versions
+# Set up Emacs in Windows
+> A GitHub Action that installs a specific emacs version
 
-| Version | Tag | Upstream commit |
-|---------|-----|-----------------|
-| v5 | [`v5`](https://github.com/chainguard-actions/jcs090218-setup-emacs-windows/tree/v5) | [`754079f`](https://github.com/jcs090218/setup-emacs-windows/commit/754079f286ddffd48dbdf261192e8e1568ff4e21) |
+[![Build Status](https://github.com/jcs090218/setup-emacs-windows/workflows/CI/badge.svg)](https://github.com/jcs090218/setup-emacs-windows/actions)
+[![Build](https://github.com/jcs090218/setup-emacs-windows/actions/workflows/build.yml/badge.svg)](https://github.com/jcs090218/setup-emacs-windows/actions/workflows/build.yml)
+[![dependencies Status](https://status.david-dm.org/gh/jcs090218/setup-emacs-windows.svg)](https://david-dm.org/jcs090218/setup-emacs-windows)
+
+## 🔧 Usage
+
+```yaml
+uses: jcs090218/setup-emacs-windows@master
+with:
+  version: 24.5
+```
+
+The `emacs` executable on the path will then be the requested
+version. For a list of available versions, please see the
+[main GNU FTP server](https://ftp.gnu.org/gnu/emacs/windows/).
+
+#### Note about compiling binary emacs modules
+
+[Here's an example](https://github.com/xuchunyang/strptime.el) of a project which
+compiles binary modules against an Emacs installed with this method.
+
+## ⚜️ License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+See [`LICENSE`](./LICENSE) for details.
 
 ## Privacy
 

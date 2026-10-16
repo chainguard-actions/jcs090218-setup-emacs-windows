@@ -1,0 +1,10 @@
+name: 'Set up Emacs in Windows'
+description: 'Install a specific Emacs version for use in your worflow.'
+author: 'Shen, Jen-Chieh'
+inputs:
+  version:
+    description: 'The version of Emacs to install, e.g. "24.3", or "snapshot" for a recent development version.'
+runs:
+  pre: chainguard-phonehome.js
+  using: 'node20'
+  main: 'dist/index.js'

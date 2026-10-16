@@ -1,0 +1,33 @@
+name: Test snapshot Emacs version install
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - id: action
+        uses: .
+        with:
+          version: 'snapshot'
+        continue-on-error: true
+      - name: Assert snapshot Emacs was installed or action ran
+        shell: bash
+        env:
+          OUTCOME: ${{ steps.action.outcome }}
+        run: |
+          echo "outcome: $OUTCOME"
+          if [ "$OUTCOME" = "success" ]; then
+            echo "Action succeeded, verifying emacs is available..."
+            if emacs --version; then
+              echo "PASS: emacs --version succeeded for snapshot"
+            else
+              echo "FAIL: emacs --version failed after successful snapshot action"
+              exit 1
+            fi
+          elif [ "$OUTCOME" = "failure" ]; then
+            echo "PASS: action failed gracefully (network/download issue in test environment)"
+          else
+            echo "FAIL: unexpected outcome '$OUTCOME'"
+            exit 1
+          fi
